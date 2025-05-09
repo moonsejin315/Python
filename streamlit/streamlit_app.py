@@ -5,11 +5,15 @@ import joblib
 from datetime import datetime
 
 # 모델 및 전처리 객체 불러오기
-model = joblib.load(current_dir,"model.pkl")  # 학습된 랜덤포레스트 모델
-le_gender = joblib.load("le_gender.pkl")  # 성별 인코더
-le_product = joblib.load("le_product.pkl")  # 상품 인코더
-le_channel = joblib.load("le_channel.pkl")  # 채널 인코더
-le_reason = joblib.load("le_reason.pkl")    # 문의 이유 인코더
+
+current_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_dir, "model.pkl")
+
+model = joblib.load(model_path) #학습된 랜덤포레스트 모델
+le_gender = joblib.load(os.path.join(current_dir, "le_gender.pkl"))# 성별 인코더
+le_product = joblib.load(os.path.join(current_dir, "le_product.pkl"))  # 상품 인코더
+le_channel = joblib.load(os.path.join(current_dir, "le_channel.pkl"))  # 채널 인코더
+le_reason = joblib.load(os.path.join(current_dir, "le_reason.pkl"))    # 문의 이유 인코더
 
 st.title("구독 이탈 예측기")
 st.write("고객 정보를 입력하면 이탈 확률을 예측합니다.")
