@@ -3,13 +3,15 @@ import pandas as pd
 import numpy as np
 import joblib
 from datetime import datetime
+from pathlib import Path
 
-# 모델 및 전처리 객체 불러오기
-model = joblib.load("model.pkl")  # 학습된 랜덤포레스트 모델
-le_gender = joblib.load("le_gender.pkl")  # 성별 인코더
-le_product = joblib.load("le_product.pkl")  # 상품 인코더
-le_channel = joblib.load("le_channel.pkl")  # 채널 인코더
-le_reason = joblib.load("le_reason.pkl")    # 문의 이유 인코더
+base_path = Path(__file__).parent if '__file__' in globals() else Path.cwd()
+
+model = joblib.load(base_path / "model.pkl")
+le_gender = joblib.load(base_path / "le_gender.pkl")
+le_product = joblib.load(base_path / "le_product.pkl")
+le_channel = joblib.load(base_path / "le_channel.pkl")
+le_reason = joblib.load(base_path / "le_reason.pkl")
 
 st.title("구독 이탈 예측기")
 st.write("고객 정보를 입력하면 이탈 확률을 예측합니다.")
