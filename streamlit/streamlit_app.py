@@ -5,7 +5,7 @@ import joblib
 from datetime import datetime
 
 # 모델 및 전처리 객체 불러오기
-model = joblib.load(streamlit, "model.pkl")  # 학습된 랜덤포레스트 모델
+model = joblib.load(Python/streamlit, "model.pkl")  # 학습된 랜덤포레스트 모델
 le_gender = joblib.load("le_gender.pkl")  # 성별 인코더
 le_product = joblib.load("le_product.pkl")  # 상품 인코더
 le_channel = joblib.load("le_channel.pkl")  # 채널 인코더
