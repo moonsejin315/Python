@@ -4,16 +4,14 @@ import numpy as np
 import joblib
 from datetime import datetime
 
-# 모델 및 전처리 객체 불러오기
+# 현재 작업 디렉토리 기준
+current_dir = Path.cwd()
 
-current_dir = os.path.dirname(__file__)
-model_path = os.path.join(current_dir, "model.pkl")
-
-model = joblib.load(model_path) #학습된 랜덤포레스트 모델
-le_gender = joblib.load(os.path.join(current_dir, "le_gender.pkl"))# 성별 인코더
-le_product = joblib.load(os.path.join(current_dir, "le_product.pkl"))  # 상품 인코더
-le_channel = joblib.load(os.path.join(current_dir, "le_channel.pkl"))  # 채널 인코더
-le_reason = joblib.load(os.path.join(current_dir, "le_reason.pkl"))    # 문의 이유 인코더
+model = joblib.load(current_dir / "model.pkl")
+le_gender = joblib.load(current_dir / "le_gender.pkl")
+le_product = joblib.load(current_dir / "le_product.pkl")
+le_channel = joblib.load(current_dir / "le_channel.pkl")
+le_reason = joblib.load(current_dir / "le_reason.pkl")
 
 st.title("구독 이탈 예측기")
 st.write("고객 정보를 입력하면 이탈 확률을 예측합니다.")
